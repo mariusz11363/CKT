@@ -82,6 +82,7 @@ nazwy <- function(plik_do_poprawy, plik_do_zapisu, zapis=F){
     
     
     nazwy[i] <- gsub("MLl", "ml", nazwy[[i]])
+    nazwy[i] <- gsub("mlL", "ml", nazwy[[i]])
     
     nazwy[i] <- gsub("([0-9])([CM])", "\\1 cm", nazwy[[i]])
     nazwy[i] <- gsub("([0-9])([cm])", "\\1 \\2", nazwy[[i]])
