@@ -61,31 +61,31 @@ server <- function(input, output) {
       nazwy[i] <- gsub("2 gO", "2GO", nazwy[[i]])
       nazwy[i] <- gsub("gRAT", "GRAT.", nazwy[[i]])
 
-      nazwy[i] <- gsub("([0-9])([KG])", "\\1 \\2", nazwy[[i]])
-      nazwy[i] <- gsub("([0-9])([kg])", "\\1 KG", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([KG])", "\\1 kg", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([kg])", "\\1 \\2", nazwy[[i]])
 
-      nazwy[i] <- gsub("([0-9])([L])", "\\1 \\2", nazwy[[i]])
-      nazwy[i] <- gsub("([0-9])([l])", "\\1 L", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([L])", "\\1 l", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([l])", "\\1 \\2", nazwy[[i]])
 
-      nazwy[i] <- gsub("([0-9])([ML])", "\\1 \\2", nazwy[[i]])
-      nazwy[i] <- gsub("([0-9])([ml])", "\\1 ML", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([ML])", "\\1 ml", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([ml])", "\\1 \\2", nazwy[[i]])
       nazwy[i] <- gsub("MLl", "ML", nazwy[[i]])
 
-      nazwy[i] <- gsub("([0-9])([CM])", "\\1 \\2", nazwy[[i]])
-      nazwy[i] <- gsub("([0-9])([cm])", "\\1 CM", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([CM])", "\\1 cm", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([cm])", "\\1 \\2", nazwy[[i]])
 
-      nazwy[i] <- gsub("([0-9])([MM])", "\\1 \\2", nazwy[[i]])
-      nazwy[i] <- gsub("([0-9])([mm])", "\\1 MM", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([MM])", "\\1 mm", nazwy[[i]])
+      nazwy[i] <- gsub("([0-9])([mm])", "\\1 \\2", nazwy[[i]])
 
       cat("Gramatury zostały przetworzone.\n")
       cat("Przetwarzanie jednostek wymiarowych...\n")
 
-      nazwy[i] <- gsub("kg", "KG", nazwy[[i]])
-      nazwy[i] <- gsub("ml", "ML", nazwy[[i]])
+      #nazwy[i] <- gsub("kg", "KG", nazwy[[i]])
+      #nazwy[i] <- gsub("ml", "ML", nazwy[[i]])
       # nazwy[i] <- gsub("G", "g", nazwy[[i]])
-      nazwy[i] <- gsub("cm", "CM", nazwy[[i]])
-      nazwy[i] <- gsub("l", "L", nazwy[[i]])
-      nazwy[i] <- gsub("mm", "MM", nazwy[[i]])
+      #nazwy[i] <- gsub("cm", "CM", nazwy[[i]])
+     # nazwy[i] <- gsub("l", "L", nazwy[[i]])
+     # nazwy[i] <- gsub("mm", "MM", nazwy[[i]])
 
       cat("Jednostki wymiarów zostały opracowane.\n")
       cat("Trwa przetwarzanie wyjątków...\n")
