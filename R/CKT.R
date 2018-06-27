@@ -1,5 +1,15 @@
 CKT <- function(){
-library("shiny")
+
+  if (!require("shiny")) install.packages("shiny")
+  if (!require("stringr")) install.packages("stringr")
+  if (!require("splitstackshape")) install.packages("splitstackshape")
+  if (!require("xlsx")) install.packages("xlsx")
+
+  library("shiny")
+  library("stringr")
+  library(splitstackshape)
+  library("xlsx")
+
 
 ui <- fluidPage(
   sidebarLayout(
@@ -23,9 +33,7 @@ server <- function(input, output) {
 
   nazwy <- function(plik_do_poprawy, plik_do_zapisu, zapis=F){
 
-    library("stringr")
-    library(splitstackshape)
-    library("xlsx")
+
 
 
     nazwy <- readxl::read_xlsx(plik_do_poprawy, 1, col_names = F)
@@ -249,6 +257,6 @@ server <- function(input, output) {
 }
 
 # Run the application
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server, )
 
 }
