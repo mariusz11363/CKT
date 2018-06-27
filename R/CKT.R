@@ -10,6 +10,7 @@ CKT <- function(){
   library(splitstackshape)
   library("xlsx")
 
+  options(defaultPackages=c(getOption("defaultPackages"),"CKT"))
 
 ui <- fluidPage(
   sidebarLayout(
