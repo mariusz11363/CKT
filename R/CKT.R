@@ -73,9 +73,7 @@ CKT <- function(){
         
         for(r in 2:nrow(nazwy)){
           
-          if(is.na(nazwy$jednostki[r])==T){
-            return(NULL)
-          }else{
+          if(is.na(nazwy$jednostki[r])==F){
         nazwy[[i]][r] <- gsub(nazwy$jednostki[r],nazwy$bez_spacji[r],nazwy[[i]][r])
           }
         }
