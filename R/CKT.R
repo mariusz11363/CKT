@@ -3,7 +3,9 @@ CKT <- function(){
   if (!require("shiny")) install.packages("shiny")
   if (!require("stringr")) install.packages("stringr")
   if (!require("splitstackshape")) install.packages("splitstackshape")
-
+  if (!require("stringdist")) install.packages("stringdist")
+  if (!require("lettercase")) install.packages("lettercase")
+  if (!require("dplyr")) install.packages("dplyr")
   
   library("shiny")
   library("stringr")
@@ -209,7 +211,7 @@ CKT <- function(){
       }
       
       
-      nazwy
+      nazwy[1:18]
       
     }
     
