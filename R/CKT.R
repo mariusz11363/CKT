@@ -3,12 +3,14 @@ CKT <- function(){
   if (!require("shiny")) install.packages("shiny")
   if (!require("stringr")) install.packages("stringr")
   if (!require("splitstackshape")) install.packages("splitstackshape")
-  if (!require("xlsx")) install.packages("xlsx")
+
   
   library("shiny")
   library("stringr")
   library(splitstackshape)
-  library("xlsx")
+  library("stringdist")
+  library("lettercase")
+  library("dplyr")
   
   options(defaultPackages=c(getOption("defaultPackages"),"CKT"))
   
@@ -50,60 +52,33 @@ CKT <- function(){
       
       #nazwy <- nazwy[1:500,]
       
+ 
+      
       for(i in 4:4){
         
         cat("Uruchomiono proces...\n")
         
-        nazwy[i] <- gsub("([0-9])([g])", "\\1 \\2", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9])([G])", "\\1 g", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9])([GR])+", "\\1 g", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9])([gR])+", "\\1 g", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9])([GB])", "\\1GB", nazwy[[i]])
-        nazwy[i] <- gsub("gR", "g", nazwy[[i]])
-        nazwy[i] <- gsub("gB", "GB", nazwy[[i]])
+        nazwy$jednostki <- as.vector(str_match(nazwy[[i]], "[0-9]cm|[0-9] cm|[0-9]mm|[0-9] mm|[0-9]MM|[0-9] MM|[0-9]CM|[0-9] CM|[0-9] KG|[0-9] ML|[0-9] L|[0-9] G|[0-9]KG|[0-9]ML|[0-9]L|[0-9]G|[0-9] kg|[0-9] ml|[0-9] l|[0-9] g|[0-9]kg|[0-9]ml|[0-9]l|[0-9]g|[[:digit:]]+[\\,\\.]*[[:digit:]]+kg|[[:digit:]]+[\\,\\.]*[[:digit:]]+ kg|[[:digit:]]+[\\,\\.]*[[:digit:]]+g|[[:digit:]]+[\\,\\.]*[[:digit:]]+ g|[[:digit:]]+[\\,\\.]*[[:digit:]]+ml|[[:digit:]]+[\\,\\.]*[[:digit:]]+ ml|[[:digit:]]+[\\,\\.]*[[:digit:]]+l|[[:digit:]]+[\\,\\.]*[[:digit:]]+ l|[[:digit:]]+[\\,\\.]*[[:digit:]]+KG|[[:digit:]]+[\\,\\.]*[[:digit:]]+ KG|[[:digit:]]+[\\,\\.]*[[:digit:]]+G|[[:digit:]]+[\\,\\.]*[[:digit:]]+ G|[[:digit:]]+[\\,\\.]*[[:digit:]]+ML|[[:digit:]]+[\\,\\.]*[[:digit:]]+ ML|[[:digit:]]+[\\,\\.]*[[:digit:]]+L|[[:digit:]]+[\\,\\.]*[[:digit:]]+ L|[[:digit:]]+[\\,\\.]*[[:digit:]]+cm|[[:digit:]]+[\\,\\.]*[[:digit:]]+ cm|[[:digit:]]+[\\,\\.]*[[:digit:]]+CM|[[:digit:]]+[\\,\\.]*[[:digit:]]+ CM|[[:digit:]]+[\\,\\.]*[[:digit:]]+mm|[[:digit:]]+[\\,\\.]*[[:digit:]]+ mm|[[:digit:]]+[\\,\\.]*[[:digit:]]+MM|[[:digit:]]+[\\,\\.]*[[:digit:]]+ MM"))
+        nazwy$bez_spacji <- gsub(" ","",str_decapitalize(nazwy$jednostki))
+        nazwy$bez_spacji <- gsub("kg"," kg",nazwy$bez_spacji)
+        nazwy$bez_spacji <- gsub("g"," g",nazwy$bez_spacji)
+        nazwy$bez_spacji <- gsub("k g","kg",nazwy$bez_spacji)
+        nazwy$bez_spacji <- gsub("ml"," ml",nazwy$bez_spacji)
+        nazwy$bez_spacji <- gsub("l"," l",nazwy$bez_spacji)
+        nazwy$bez_spacji <- gsub("m l","ml",nazwy$bez_spacji)
+        nazwy$bez_spacji <- gsub("cm"," cm",nazwy$bez_spacji)
+        nazwy$bez_spacji <- gsub("mm"," mm",nazwy$bez_spacji)
         
-        nazwy[i] <- gsub("2 gO", "2GO", nazwy[[i]])
-        nazwy[i] <- gsub("gRAT", "GRAT.", nazwy[[i]])
+        for(r in 2:nrow(nazwy)){
         
-        nazwy[i] <- gsub("([0-9])([KG])", "\\1 kg", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9])([kg])", "\\1 \\2", nazwy[[i]])
+        nazwy[[i]][r] <- gsub(nazwy$jednostki[r],nazwy$bez_spacji[r],nazwy[[i]][r])
+        nazwy[[i]][r] <- c("test")
+        }
         
-        nazwy[i] <- gsub("([0-9])([L])", "\\1 l", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9])([l])", "\\1 \\2", nazwy[[i]])
-        
-        nazwy[i] <- gsub("([0-9])([ML])", "\\1 ml", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9])([ml])", "\\1 \\2", nazwy[[i]])
-        
-        
-        nazwy[i] <- gsub("([0-9])([ KG])", "\\1 kg", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9]) ([kg])", "\\1 \\2", nazwy[[i]])
-        
-        nazwy[i] <- gsub("([0-9]) ([ L])", "\\1 l", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9]) [l])", "\\1 \\2", nazwy[[i]])
-        
-        nazwy[i] <- gsub("([0-9]) ([ ML])", "\\1 ml", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9]) ([ml])", "\\1 \\2", nazwy[[i]])
-        
-        
-        nazwy[i] <- gsub("MLl", "ml", nazwy[[i]])
-        nazwy[i] <- gsub("mlL", "ml", nazwy[[i]])
-        nazwy[i] <- gsub("kgKG", "kg", nazwy[[i]])
-        
-        nazwy[i] <- gsub("([0-9])([CM])", "\\1 cm", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9])([cm])", "\\1 \\2", nazwy[[i]])
-        
-        nazwy[i] <- gsub("([0-9])([MM])", "\\1 mm", nazwy[[i]])
-        nazwy[i] <- gsub("([0-9])([mm])", "\\1 \\2", nazwy[[i]])
         
         cat("Gramatury zostały przetworzone.\n")
         cat("Przetwarzanie jednostek wymiarowych...\n")
-        
-        #nazwy[i] <- gsub("kg", "KG", nazwy[[i]])
-        #nazwy[i] <- gsub("ml", "ML", nazwy[[i]])
-        # nazwy[i] <- gsub("G", "g", nazwy[[i]])
-        #nazwy[i] <- gsub("cm", "CM", nazwy[[i]])
-        # nazwy[i] <- gsub("l", "L", nazwy[[i]])
-        # nazwy[i] <- gsub("mm", "MM", nazwy[[i]])
+
         
         cat("Jednostki wymiarów zostały opracowane.\n")
         cat("Trwa przetwarzanie wyjątków...\n")
