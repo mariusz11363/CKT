@@ -8,7 +8,7 @@ CKT <- function(){
   library("shiny")
   library("stringr")
   library(splitstackshape)
-  library("xlsx")
+  #library("xlsx")
 
   options(defaultPackages=c(getOption("defaultPackages"),"CKT"))
 
