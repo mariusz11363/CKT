@@ -66,14 +66,18 @@ CKT <- function(){
         nazwy$bez_spacji <- gsub("g"," g",nazwy$bez_spacji)
         nazwy$bez_spacji <- gsub("k g","kg",nazwy$bez_spacji)
         nazwy$bez_spacji <- gsub("ml"," ml",nazwy$bez_spacji)
-        nazwy$bez_spacji <- gsub("l"," l",nazwy$bez_spacji)
-        nazwy$bez_spacji <- gsub("m l","ml",nazwy$bez_spacji)
+        nazwy$bez_spacji <- gsub("l"," L",nazwy$bez_spacji)
+        nazwy$bez_spacji <- gsub("m L","ml",nazwy$bez_spacji)
         nazwy$bez_spacji <- gsub("cm"," cm",nazwy$bez_spacji)
         nazwy$bez_spacji <- gsub("mm"," mm",nazwy$bez_spacji)
         
         for(r in 2:nrow(nazwy)){
-        
+          
+          if(nazwy$jednostki[r]==NA){
+            return(NULL)
+          }else{
         nazwy[[i]][r] <- gsub(nazwy$jednostki[r],nazwy$bez_spacji[r],nazwy[[i]][r])
+          }
         }
         
         
