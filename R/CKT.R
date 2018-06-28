@@ -3,7 +3,7 @@ CKT <- function(){
   if (!require("shiny")) install.packages("shiny")
   if (!require("stringr")) install.packages("stringr")
   if (!require("splitstackshape")) install.packages("splitstackshape")
-  if (!require("xlsx")) install.packages("xlsx")
+  #if (!require("xlsx")) install.packages("xlsx")
 
   library("shiny")
   library("stringr")
