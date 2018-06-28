@@ -74,7 +74,6 @@ CKT <- function(){
         for(r in 2:nrow(nazwy)){
         
         nazwy[[i]][r] <- gsub(nazwy$jednostki[r],nazwy$bez_spacji[r],nazwy[[i]][r])
-        nazwy[[i]][r] <- c("test")
         }
         
         
