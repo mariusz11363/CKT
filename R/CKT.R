@@ -188,8 +188,8 @@ CKT <- function(){
         nazwy[i] <- gsub("KARMA FRISKIES D/K","KARMA FRISKIES DLA KOTA", nazwy[[i]])
         nazwy[i] <- gsub("KARMA WHISK.D/K","KARMA WHISKAS DLA KOTA", nazwy[[i]])
         nazwy[i] <- gsub(" WP "," WIEPRZ.", nazwy[[i]])
-        #nazwy[i] <- gsub("","", nazwy[[i]])
-        #nazwy[i] <- gsub("","", nazwy[[i]])
+        nazwy[i] <- gsub("BEZ CUKIERKI","BEZ CUKRU", nazwy[[i]])
+        nazwy[i] <- gsub("B/CUKIERKI","BEZ CUKRU", nazwy[[i]])
         #nazwy[i] <- gsub("","", nazwy[[i]])
         #nazwy[i] <- gsub("","", nazwy[[i]])
         #nazwy[i] <- gsub("","", nazwy[[i]])
@@ -212,7 +212,7 @@ CKT <- function(){
       }
       
       
-      nazwy[1:18]
+      nazwy[1:16]
       
     }
     
