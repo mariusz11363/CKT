@@ -36,7 +36,7 @@ CKT <- function(){
   server <- function(input, output) {
     
     
-    
+    options(shiny.maxRequestSize=300*1024^2) 
     
     
     
