@@ -192,8 +192,8 @@ CKT <- function(){
         nazwy[i] <- gsub("B/CUKIERKI","BEZ CUKRU", nazwy[[i]])
         nazwy[i] <- gsub("BEZ.DOD.CUKIERKI","BEZ CUKRU", nazwy[[i]])
         nazwy[i] <- gsub("KROJONYNY ","KROJONY", nazwy[[i]])
-        #nazwy[i] <- gsub("","", nazwy[[i]])
-        #nazwy[i] <- gsub("","", nazwy[[i]])
+        nazwy[i] <- gsub("BEZ DROŻDŻÓWKA","BEZ DROŻDŻY", nazwy[[i]])
+        nazwy[i] <- gsub("DROŻDRZY","DROŻDŻY", nazwy[[i]])
         
         
         
