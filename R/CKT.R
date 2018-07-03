@@ -194,6 +194,19 @@ CKT <- function(){
         nazwy[i] <- gsub("KROJONYNY ","KROJONY", nazwy[[i]])
         nazwy[i] <- gsub("BEZ DROŻDŻÓWKA","BEZ DROŻDŻY", nazwy[[i]])
         nazwy[i] <- gsub("DROŻDRZY","DROŻDŻY", nazwy[[i]])
+        nazwy[i] <- gsub("CUKIERKI ER","CUKIER", nazwy[[i]])
+        nazwy[i] <- gsub("CUKIERKI ERNIA","CUKIERNIA", nazwy[[i]])
+        nazwy[i] <- gsub("CUKIERKI EM","CUKREM", nazwy[[i]])
+        nazwy[i] <- gsub("CUKIERKI OWYCH","CUKROWYCH", nazwy[[i]])
+        nazwy[i] <- gsub("DEKORACJI CUKIERKI","MIX DEKORACJI CUKROWYCH", nazwy[[i]])
+        nazwy[i] <- gsub("CUKIERKI OWE","CUKROWE", nazwy[[i]])
+        nazwy[i] <- gsub("ESPRAY SSO Y SSO SSO","ESPRESSO", nazwy[[i]])
+        nazwy[i] <- gsub(" SSO Y "," SSO SSO ", nazwy[[i]])
+        # nazwy[i] <- gsub("","", nazwy[[i]])
+        # nazwy[i] <- gsub("","", nazwy[[i]])
+        # nazwy[i] <- gsub("","", nazwy[[i]])
+        # nazwy[i] <- gsub("","", nazwy[[i]])
+        
         
         
         
